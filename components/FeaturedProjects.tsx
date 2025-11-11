@@ -41,7 +41,7 @@ const projects = [
         description: "A full-featured e-commerce platform with real-time inventory management, secure payments, and admin dashboard.",
         tags: ["React", "Node.js", "MongoDB", "Stripe"],
         imageUrl: "https://picsum.photos/seed/ecom/600/400",
-        projectUrl: "https://github.com/example/ecommerce-platform"
+        projectUrl: "https://github.com/yourusername/ecommerce-platform"
     },
     {
         category: "SAAS",
@@ -49,7 +49,7 @@ const projects = [
         description: "An AI-powered content generation tool that helps marketers create engaging blog posts and copy using advanced NLP models.",
         tags: ["Next.js", "OpenAI", "TypeScript", "Tailwind"],
         imageUrl: "https://picsum.photos/seed/aicontent/600/400",
-        projectUrl: "https://github.com/example/ai-content-generator"
+        projectUrl: "https://github.com/yourusername/ai-content-generator"
     },
     {
         category: "DASHBOARD",
@@ -57,7 +57,7 @@ const projects = [
         description: "A comprehensive analytics dashboard with real-time data visualization and customizable reporting features.",
         tags: ["React", "D3.js", "Firebase", "Material-UI"],
         imageUrl: "https://picsum.photos/seed/analytics/600/400",
-        projectUrl: "https://github.com/example/analytics-dashboard"
+        projectUrl: "https://github.com/yourusername/analytics-dashboard"
     }
 ];
 

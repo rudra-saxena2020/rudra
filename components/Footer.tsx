@@ -21,10 +21,10 @@ const Footer: React.FC = () => {
                     <a href="#contact" onClick={(e) => handleLinkClick(e, '#contact')} className="hover:text-cyan-400 transition-colors">Contact</a>
                 </div>
                 <div className="flex justify-center space-x-5 mb-8">
-                    <a href="https://github.com/example" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors"><Github /></a>
-                    <a href="https://linkedin.com/in/example" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors"><Linkedin /></a>
-                    <a href="https://twitter.com/example" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors"><Twitter /></a>
-                    <a href="https://www.instagram.com/example/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors"><Instagram /></a>
+                    <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors"><Github /></a>
+                    <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors"><Linkedin /></a>
+                    <a href="https://twitter.com/yourusername" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors"><Twitter /></a>
+                    <a href="https://www.instagram.com/yourusername/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors"><Instagram /></a>
                 </div>
                 <p>&copy; {new Date().getFullYear()} Rudra Saxena. All rights reserved.</p>
             </div>

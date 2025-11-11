@@ -40,10 +40,10 @@ const Hero: React.FC = () => {
           </a>
         </div>
         <div className="flex space-x-5">
-          <SocialIcon href="https://github.com/example"><Github /></SocialIcon>
-          <SocialIcon href="https://linkedin.com/in/example"><Linkedin /></SocialIcon>
-          <SocialIcon href="https://twitter.com/example"><Twitter /></SocialIcon>
-          <SocialIcon href="https://www.instagram.com/example/"><Instagram /></SocialIcon>
+          <SocialIcon href="https://github.com/yourusername"><Github /></SocialIcon>
+          <SocialIcon href="https://linkedin.com/in/yourusername"><Linkedin /></SocialIcon>
+          <SocialIcon href="https://twitter.com/yourusername"><Twitter /></SocialIcon>
+          <SocialIcon href="https://www.instagram.com/yourusername/"><Instagram /></SocialIcon>
         </div>
       </div>
     </section>

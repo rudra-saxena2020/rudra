@@ -43,9 +43,13 @@ const Contact: React.FC = () => {
         setGenerateError('');
         try {
             const professionalMessage = await generateProfessionalMessage(formData.message);
+            if (!professionalMessage || professionalMessage.length === 0) {
+                throw new Error('Empty response from AI');
+            }
             setFormData(prev => ({ ...prev, message: professionalMessage }));
         } catch (err) {
-            setGenerateError('Failed to generate message. Please try again.');
+            const errorMessage = err instanceof Error ? err.message : 'Failed to generate message. Please check your API key and try again.';
+            setGenerateError(errorMessage);
             console.error(err);
         } finally {
             setIsGenerating(false);
@@ -126,9 +130,9 @@ const Contact: React.FC = () => {
                     {submitStatus === 'error' && <p className="text-red-400 text-center mt-4">Please fill out all the required fields.</p>}
                 </form>
                 <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <ContactInfoCard icon={<Mail />} title="Email" content="rudra@example.com" />
-                    <ContactInfoCard icon={<Phone />} title="Phone" content="+91 123 456 7890" />
-                    <ContactInfoCard icon={<MapPin />} title="Location" content="Meerut, India" />
+                    <ContactInfoCard icon={<Mail />} title="Email" content="your-email@example.com" />
+                    <ContactInfoCard icon={<Phone />} title="Phone" content="+91 XXXXX XXXXX" />
+                    <ContactInfoCard icon={<MapPin />} title="Location" content="Your City, Country" />
                 </div>
             </div>
         </section>
