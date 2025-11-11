@@ -10,9 +10,50 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
     <style>
+      html {
+        scroll-behavior: smooth;
+      }
       body {
         font-family: 'Inter', sans-serif;
         background-color: #0A001F;
+        --dot-bg: #0A001F;
+        --dot-color: rgba(255, 255, 255, 0.1);
+        background-image: radial-gradient(var(--dot-color) 1px, transparent 1px);
+        background-size: 2rem 2rem;
+      }
+
+      /* Entrance Animation */
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .will-animate {
+        opacity: 0;
+        animation: fadeInUp 0.8s ease-out forwards;
+      }
+      
+      .delay-100 { animation-delay: 100ms; }
+      .delay-200 { animation-delay: 200ms; }
+      .delay-300 { animation-delay: 300ms; }
+      .delay-400 { animation-delay: 400ms; }
+      .delay-500 { animation-delay: 500ms; }
+
+      /* Shimmer Effect for Text */
+      @keyframes shimmer {
+        0% { background-position: -500%; }
+        100% { background-position: 500%; }
+      }
+      .animate-shimmer {
+        background-image: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+        background-size: 200% 100%;
+        animation: shimmer 5s infinite linear;
       }
     </style>
   <script type="importmap">

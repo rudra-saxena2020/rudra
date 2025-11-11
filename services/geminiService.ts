@@ -30,8 +30,7 @@ export async function generateProfessionalMessage(originalMessage: string): Prom
       },
     });
 
-    const text = await response.text();
-    return text.trim();
+    return response.text.trim();
   } catch (error) {
     console.error("Error calling Gemini API:", error);
     throw new Error("Failed to generate message from AI.");

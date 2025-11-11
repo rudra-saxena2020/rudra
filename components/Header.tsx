@@ -16,7 +16,7 @@ const Header: React.FC = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
+      setIsScrolled(window.scrollY > 20);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
@@ -29,32 +29,32 @@ const Header: React.FC = () => {
   };
 
   return (
-    <header className={`sticky top-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-black/30 backdrop-blur-lg border-b border-gray-800' : 'py-2'}`}>
+    <header className={`sticky top-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-black/50 backdrop-blur-xl border-b border-gray-800 shadow-2xl shadow-black/20' : 'py-2'}`}>
       <div className="container mx-auto px-6 md:px-10 lg:px-20 flex justify-between items-center py-4">
-        <a href="#home" onClick={(e) => handleLinkClick(e, '#home')} className="text-2xl font-bold">
+        <a href="#home" onClick={(e) => handleLinkClick(e, '#home')} className="text-2xl font-black tracking-wider">
           <span className="text-cyan-400">RU</span>DRA
         </a>
         <nav className="hidden md:flex items-center space-x-8">
           {navLinks.map((link) => (
-            <a key={link.href} href={link.href} onClick={(e) => handleLinkClick(e, link.href)} className="text-gray-300 hover:text-cyan-400 transition-colors duration-300">{link.label}</a>
+            <a key={link.href} href={link.href} onClick={(e) => handleLinkClick(e, link.href)} className="text-gray-300 hover:text-cyan-400 transition-colors duration-300 font-medium">{link.label}</a>
           ))}
         </nav>
-        <a href="#contact" onClick={(e) => handleLinkClick(e, '#contact')} className="hidden md:block bg-gradient-to-r from-purple-600 to-pink-600 text-white font-semibold py-2 px-5 rounded-full hover:scale-105 transition-transform duration-300">
+        <a href="#contact" onClick={(e) => handleLinkClick(e, '#contact')} className="hidden md:block bg-gradient-to-r from-purple-600 to-pink-600 text-white font-semibold py-2.5 px-6 rounded-full hover:scale-105 hover:shadow-[0_0_20px_rgba(217,70,239,0.5)] transition-all duration-300">
           Let's Talk
         </a>
         <div className="md:hidden">
-          <button onClick={() => setIsMenuOpen(!isMenuOpen)}>
+          <button onClick={() => setIsMenuOpen(!isMenuOpen)} aria-label="Toggle menu">
             {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
           </button>
         </div>
       </div>
       {isMenuOpen && (
-        <div className="md:hidden bg-black/50 backdrop-blur-lg pb-4">
-          <nav className="flex flex-col items-center space-y-4">
+        <div className="md:hidden bg-black/70 backdrop-blur-lg pb-4">
+          <nav className="flex flex-col items-center space-y-4 pt-2">
             {navLinks.map((link) => (
-              <a key={link.href} href={link.href} onClick={(e) => handleLinkClick(e, link.href)} className="text-gray-300 hover:text-cyan-400 transition-colors duration-300 text-lg">{link.label}</a>
+              <a key={link.href} href={link.href} onClick={(e) => handleLinkClick(e, link.href)} className="text-gray-300 hover:text-cyan-400 transition-colors duration-300 text-lg py-1">{link.label}</a>
             ))}
-             <a href="#contact" onClick={(e) => handleLinkClick(e, '#contact')} className="bg-gradient-to-r from-purple-600 to-pink-600 text-white font-semibold py-2 px-5 rounded-full hover:scale-105 transition-transform duration-300">
+             <a href="#contact" onClick={(e) => handleLinkClick(e, '#contact')} className="mt-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-semibold py-2 px-5 rounded-full hover:scale-105 transition-transform duration-300">
                 Let's Talk
             </a>
           </nav>

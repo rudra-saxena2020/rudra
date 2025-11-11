@@ -10,11 +10,11 @@ interface ServiceCardProps {
 
 const ServiceCard: React.FC<ServiceCardProps> = ({ icon, title, description }) => {
     return (
-        <div className="bg-gray-900/50 border border-gray-800 rounded-2xl p-8 text-center flex flex-col items-center transition-all duration-300 hover:-translate-y-2 hover:border-purple-500/50 hover:shadow-2xl hover:shadow-purple-900/20">
-            <div className="bg-gradient-to-br from-purple-600 to-pink-600 p-4 rounded-full mb-6 inline-block">
+        <div className="bg-gray-900/50 border border-gray-800 rounded-2xl p-8 text-center flex flex-col items-center transition-all duration-300 hover:-translate-y-2 hover:border-purple-500/50 hover:shadow-2xl hover:shadow-purple-900/30 group">
+            <div className="bg-gradient-to-br from-purple-600 to-pink-600 p-4 rounded-full mb-6 inline-block transition-transform duration-300 group-hover:scale-110">
                 {icon}
             </div>
-            <h3 className="text-xl font-bold mb-3">{title}</h3>
+            <h3 className="text-xl font-bold mb-3 text-gray-100">{title}</h3>
             <p className="text-gray-400 text-sm leading-relaxed">{description}</p>
         </div>
     );
@@ -32,13 +32,15 @@ const services = [
 const Services: React.FC = () => {
     return (
         <section id="services" className="py-24">
-            <div className="text-center mb-16">
+            <div className="text-center mb-16 will-animate">
                 <h2 className="text-4xl md:text-5xl font-black mb-4">What I Offer</h2>
-                <p className="text-gray-400 max-w-2xl mx-auto">Comprehensive development services tailored to your needs.</p>
+                <p className="text-gray-400 max-w-2xl mx-auto">A comprehensive suite of development services, tailored to bring your vision to life.</p>
             </div>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
                 {services.map((service, index) => (
-                    <ServiceCard key={index} {...service} />
+                    <div key={index} className={`will-animate delay-${(index + 1) * 100}`}>
+                        <ServiceCard {...service} />
+                    </div>
                 ))}
             </div>
         </section>
