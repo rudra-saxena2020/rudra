@@ -59,7 +59,8 @@ const Contact: React.FC = () => {
                 }
             }, 20);
         } catch (err) {
-            setGenerateError('Failed to generate message. Please try again.');
+            const errorMessage = err instanceof Error ? err.message : 'Failed to generate message. Please try again.';
+            setGenerateError(errorMessage);
             console.error(err);
         } finally {
             setIsGenerating(false);
@@ -95,15 +96,15 @@ const Contact: React.FC = () => {
                 <p className="text-gray-400 max-w-2xl mx-auto">Have a project in mind or just want to say hello? I'd love to hear from you.</p>
             </div>
             <div className="max-w-4xl mx-auto">
-                <form onSubmit={handleSubmit} className="bg-gray-900/50 border border-gray-800 rounded-2xl p-8 md:p-12 space-y-6 mb-12 will-animate delay-100">
+                <form onSubmit={handleSubmit} className="bg-gray-900/50 border border-gray-800 rounded-2xl p-8 md:p-12 space-y-6 mb-12 will-animate delay-100" aria-label="Contact form">
                     <div className="grid md:grid-cols-2 gap-6">
-                        <input type="text" name="name" placeholder="Your Name" value={formData.name} onChange={handleInputChange} className="w-full bg-gray-800/70 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 transition-all" required />
-                        <input type="email" name="email" placeholder="Your Email" value={formData.email} onChange={handleInputChange} className="w-full bg-gray-800/70 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 transition-all" required />
+                        <input type="text" name="name" placeholder="Your Name" value={formData.name} onChange={handleInputChange} className="w-full bg-gray-800/70 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 transition-all" aria-label="Your name" required />
+                        <input type="email" name="email" placeholder="Your Email" value={formData.email} onChange={handleInputChange} className="w-full bg-gray-800/70 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 transition-all" aria-label="Your email address" required />
                     </div>
-                    <input type="text" name="subject" placeholder="Subject" value={formData.subject} onChange={handleInputChange} className="w-full bg-gray-800/70 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 transition-all" required />
+                    <input type="text" name="subject" placeholder="Subject" value={formData.subject} onChange={handleInputChange} className="w-full bg-gray-800/70 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 transition-all" aria-label="Message subject" required />
                     <div className="relative">
-                        <textarea name="message" placeholder="Your Message" rows={6} value={formData.message} onChange={handleInputChange} className="w-full bg-gray-800/70 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 transition-all resize-none" required></textarea>
-                         <button type="button" onClick={handleGenerateMessage} disabled={isGenerating || isTyping} className="absolute bottom-3 right-3 bg-gray-700/80 text-gray-300 px-3 py-1.5 rounded-md text-xs flex items-center hover:bg-gray-600 disabled:opacity-50 disabled:cursor-not-allowed transition-colors">
+                        <textarea name="message" placeholder="Your Message" rows={6} value={formData.message} onChange={handleInputChange} className="w-full bg-gray-800/70 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 transition-all resize-none" aria-label="Your message" required></textarea>
+                         <button type="button" onClick={handleGenerateMessage} disabled={isGenerating || isTyping} className="absolute bottom-3 right-3 bg-gray-700/80 text-gray-300 px-3 py-1.5 rounded-md text-xs flex items-center hover:bg-gray-600 disabled:opacity-50 disabled:cursor-not-allowed transition-colors" aria-label="Generate AI draft message">
                              {isGenerating ? <><Loader2 size={14} className="animate-spin mr-1.5" />Generating...</> : isTyping ? <><Loader2 size={14} className="animate-spin mr-1.5" />Typing...</> : <><Wand2 size={14} className="mr-1.5 text-purple-400" />AI Draft</>}
                          </button>
                     </div>
@@ -117,9 +118,9 @@ const Contact: React.FC = () => {
                     {submitStatus === 'error' && <p className="text-red-400 text-center mt-4">Please fill out all the required fields.</p>}
                 </form>
                 <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <div className="will-animate delay-200"><ContactInfoCard icon={<Mail />} title="Email" content="rudra@example.com" /></div>
-                    <div className="will-animate delay-300"><ContactInfoCard icon={<Phone />} title="Phone" content="+91 123 456 7890" /></div>
-                    <div className="will-animate delay-400"><ContactInfoCard icon={<MapPin />} title="Location" content="Meerut, India" /></div>
+                    <div className="will-animate delay-200"><ContactInfoCard icon={<Mail />} title="Email" content="your-email@example.com" /></div>
+                    <div className="will-animate delay-300"><ContactInfoCard icon={<Phone />} title="Phone" content="+91 XXXXX XXXXX" /></div>
+                    <div className="will-animate delay-400"><ContactInfoCard icon={<MapPin />} title="Location" content="Your City, Country" /></div>
                 </div>
             </div>
         </section>

@@ -2,12 +2,24 @@
 import React from 'react';
 import { Github, Linkedin, Twitter, Instagram } from 'lucide-react';
 
-const SocialIcon: React.FC<{ href: string; children: React.ReactNode }> = ({ href, children }) => (
-  <a href={href} target="_blank" rel="noopener noreferrer" className="bg-white/5 p-3 rounded-full text-gray-300 hover:text-cyan-400 hover:bg-white/10 hover:shadow-[0_0_15px_rgba(0,255,255,0.6)] backdrop-blur-sm transition-all duration-300 transform hover:scale-110">
+/**
+ * SocialIcon component
+ * Displays an interactive social media icon link with hover effects
+ * 
+ * @param href - URL to the social media profile
+ * @param children - Icon component to display
+ * @param aria-label - Accessible label for the link
+ */
+const SocialIcon: React.FC<{ href: string; children: React.ReactNode; 'aria-label'?: string }> = ({ href, children, ...props }) => (
+  <a href={href} target="_blank" rel="noopener noreferrer" className="bg-white/5 p-3 rounded-full text-gray-300 hover:text-cyan-400 hover:bg-white/10 hover:shadow-[0_0_15px_rgba(0,255,255,0.6)] backdrop-blur-sm transition-all duration-300 transform hover:scale-110" {...props}>
     {children}
   </a>
 );
 
+/**
+ * Hero section component
+ * Main landing section with introduction, CTA buttons, and social links
+ */
 const Hero: React.FC = () => {
     const handleScrollToProjects = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
@@ -39,10 +51,10 @@ const Hero: React.FC = () => {
           </a>
         </div>
         <div className="flex space-x-5 will-animate delay-500">
-          <SocialIcon href="https://github.com/example"><Github /></SocialIcon>
-          <SocialIcon href="https://linkedin.com/in/example"><Linkedin /></SocialIcon>
-          <SocialIcon href="https://twitter.com/example"><Twitter /></SocialIcon>
-          <SocialIcon href="https://www.instagram.com/example/"><Instagram /></SocialIcon>
+          <SocialIcon href="https://github.com/yourusername" aria-label="GitHub"><Github /></SocialIcon>
+          <SocialIcon href="https://linkedin.com/in/yourusername" aria-label="LinkedIn"><Linkedin /></SocialIcon>
+          <SocialIcon href="https://twitter.com/yourusername" aria-label="Twitter"><Twitter /></SocialIcon>
+          <SocialIcon href="https://www.instagram.com/yourusername/" aria-label="Instagram"><Instagram /></SocialIcon>
         </div>
       </div>
     </section>

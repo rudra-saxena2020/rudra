@@ -15,7 +15,7 @@ export async function generateProfessionalMessage(originalMessage: string): Prom
   // Check if the AI instance is available before making a call.
   if (!ai) {
     // Reject the promise to be caught by the calling component's error handler.
-    throw new Error("AI functionality is currently unavailable.");
+    throw new Error("AI functionality is currently unavailable. Please set your GEMINI_API_KEY.");
   }
 
   try {
@@ -30,9 +30,11 @@ export async function generateProfessionalMessage(originalMessage: string): Prom
       },
     });
 
-    return response.text.trim();
+    const text = await response.text();
+    return text.trim();
   } catch (error) {
     console.error("Error calling Gemini API:", error);
-    throw new Error("Failed to generate message from AI.");
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+    throw new Error(`Failed to generate message from AI: ${errorMessage}`);
   }
 }
